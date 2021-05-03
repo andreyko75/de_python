@@ -4,12 +4,11 @@ _ = 0
 str_out = ''
 for i in les_string:
     for j in i:
-        if j == '+':
-            les_string[_] = (f'"+{int(les_string[_]):02d}"')
-            break
         if j.isdigit():
-            les_string[_] = (f'"{int(les_string[_]):02d}"')
+            les_string[_] = (f'"{int(les_string[_]):02d}"') if les_string[_][0].isdigit() else \
+                            (f'"{les_string[_][0]}{int(pow(int(les_string[_]) ** 2, .5)):02d}"')
+            ## использовалось возведение в квадрат температуры  и извлечение корня
+            ## для того, что бы отрицательные температуры обрабатывались нормально
             break
-    str_out = str_out + les_string[_] + ' '
     _ += 1
-print(str_out)
+print(' '.join(les_string))
